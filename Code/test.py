@@ -1,4 +1,5 @@
 import cv2
+import os
 from picamera2 import Picamera2
 
 def stream_video():
@@ -14,6 +15,11 @@ def stream_video():
         cv2.imshow("picam", frame)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
+        elif cv2.waitKey(1) & 0xFF == ord('p'):
+            path = "../data"
+            img_path = os.path.join(path, "Imagen_capturada.jpg")
+            os.makedirs(path, exist_ok=True)
+            cv2.imwrite(img_path,frame)
     cv2.destroyAllWindows()
 
 if __name__ == "__main__":
