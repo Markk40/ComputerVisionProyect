@@ -15,11 +15,12 @@ def stream_video():
         cv2.imshow("picam", frame)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
-        elif cv2.waitKey(1) & 0xFF == ord('p'):
+        elif cv2.waitKey(1) & 0xFF == ord('s'):
             path = "../data"
+            os.makedirs(path, exist_ok=True)
             i = len(os.listdir(path))
             img_path = os.path.join(path, f"Imagen_capturada_{i}.jpg")
-            os.makedirs(path, exist_ok=True)
+            
             cv2.imwrite(img_path,frame)
     cv2.destroyAllWindows()
 
