@@ -13,10 +13,10 @@ def stream_video():
     while True:
         frame = picam.capture_array()
         cv2.imshow("picam", frame)
+        #if cv2.waitKey(1) & 0xFF == ord('q'):
+         #   break
         if cv2.waitKey(1) & 0xFF == ord('q'):
-            break
-        elif cv2.waitKey(1) & 0xFF == ord('s'):
-            path = "../data"
+            path = "../"
             os.makedirs(path, exist_ok=True)
             i = len(os.listdir(path))
             img_path = os.path.join(path, f"Imagen_capturada_{i}.jpg")
