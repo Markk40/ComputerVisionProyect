@@ -46,28 +46,18 @@ def detect_figures(img):
     return None
 
 
-def state_machine():
+def state_machine(picam):
     """
     State machine that processes the sequence of color detection.
     The correct sequence is: Yellow -> Green -> Blue -> Brown.
     """
-    state_sequence = ["brown","yellow", "green", "blue"]
+    state_sequence = ["yellow", "green", "blue","brown"]
     current_state = 0  # Start with the first color (yellow)
-
-    picam = Picamera2()
-    picam.preview_configuration.main.size = (1280, 720)
-    picam.preview_configuration.main.format = "RGB888"
-    picam.preview_configuration.align()
-    picam.configure("preview")
-    picam.start()
 
     while True:
         frame = picam.capture_array()
         cv2.imshow("picam", frame)
 
-        #if cv2.waitKey(1) & 0xFF == ord('q'):
-         #   print("SALIMOS")
-          #  break
         if cv2.waitKey(1) & 0xFF == ord('q'):
             print("CAPTURAMOS")
             # Captura 5 frames consecutivos
@@ -101,4 +91,10 @@ def state_machine():
     cv2.destroyAllWindows()
 
 if __name__ == "__main__":
-    state_machine()
+	picam = Picamera2()
+	picam.preview_configuration.main.size=(1280, 720)
+	picam.preview_configuration.main.format="RGB888"
+	picam.preview_configuration.align()
+	picam.configure("preview")
+	picam.start()
+	state_machine(picam)
