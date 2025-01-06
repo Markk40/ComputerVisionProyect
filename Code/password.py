@@ -37,7 +37,7 @@ def detect_figures(img):
         "yellow": {"light": (19, 85, 96), "dark": (47, 255, 255)},
         "green": {"light": (35, 50, 70), "dark": (85, 255, 255)},
         "blue": {"light": (75, 67, 73), "dark": (145, 255, 177)},
-        "brown": {"light": (0, 34, 63), "dark": (25, 200, 131)}
+        "brown": {"light": (0, 40, 30), "dark": (28, 231, 100)}
     }
 	
     for color, ranges in color_ranges.items():
@@ -51,7 +51,7 @@ def state_machine(picam):
     State machine that processes the sequence of color detection.
     The correct sequence is: Yellow -> Green -> Blue -> Brown.
     """
-    state_sequence = ["yellow", "green", "blue","brown"]
+    state_sequence = ["brown","yellow", "green", "blue"]
     current_state = 0  # Start with the first color (yellow)
 
     while True:
@@ -86,9 +86,6 @@ def state_machine(picam):
 
         # Espera 1ms para continuar con el siguiente ciclo
         cv2.waitKey(1)
-
-    picam.stop()
-    cv2.destroyAllWindows()
 
 if __name__ == "__main__":
 	picam = Picamera2()

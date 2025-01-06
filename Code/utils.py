@@ -105,3 +105,8 @@ def get_hsv_color_ranges(image: np.array):
             break
 
     cv2.destroyAllWindows()
+import os
+if __name__=="__main__":
+    filename = os.path.join("../","Imagen_capturada_12.jpg")
+    img = cv2.imread(filename)
+    get_hsv_color_ranges(img)

@@ -5,7 +5,7 @@ import time
 from password import detect_figures  # Importamos la función para detección de figuras
 
 last_color = None  # Inicializamos la variable global last_color
-container_names = {"yellow": "plastico", "green":"vidrio", "blue":"carton", "marron":"residuos organicos"}
+container_names = {"yellow": "plastico", "green":"vidrio", "blue":"carton", "brown":"residuos organicos"}
 
 def find_object(picam):
     global last_color
@@ -120,7 +120,7 @@ def get_color_bounds(color):
         "yellow": ((19, 85, 96), (47, 255, 255)),
         "green": ((35, 50, 70), (85, 255, 255)),
         "blue": ((75, 67, 73), (145, 255, 177)),
-        "brown": ((0, 34, 63), (25, 200, 131))
+        "brown": ((0, 40, 30), (28, 231, 100))
     }
     return color_ranges.get(color, ((0, 0, 0), (0, 0, 0)))  # Devuelve un rango predeterminado si no se encuentra
 
